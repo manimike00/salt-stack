@@ -12,7 +12,7 @@ start_nginx:
 default.conf:
   file.managed:
     - name: /etc/nginx/conf.d/default.conf
-    - source: salt://{tpldir}/configs/default.conf
+    - source: salt://{tpldir}}/configs/default.conf
     - user: root
     - group: root
     - mode: 644
