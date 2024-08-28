@@ -35,6 +35,16 @@ update_apt_cache_vault:
   cmd.run:
     - name: apt update
     - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
+    - require:
+      - cmd: add_hashicorp_repo
+
+#install_gpg_wget:
+#  pkg.installed:
+#    - pkgs:
+#      - gpg
+#      - wget
+#    - require:
+#      - cmd: update_apt_cache
 
 #vault.hcl:
 #  file.managed:
