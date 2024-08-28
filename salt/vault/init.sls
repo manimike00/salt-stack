@@ -38,13 +38,12 @@ update_apt_cache_vault:
     - require:
       - cmd: add_hashicorp_repo
 
-#install_gpg_wget:
-#  pkg.installed:
-#    - pkgs:
-#      - gpg
-#      - wget
-#    - require:
-#      - cmd: update_apt_cache
+install_vault:
+  pkg.installed:
+    - pkgs:
+      - vault
+    - require:
+      - cmd: add_hashicorp_repo
 
 #vault.hcl:
 #  file.managed:
