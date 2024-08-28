@@ -45,11 +45,11 @@ install_vault:
     - require:
       - cmd: add_hashicorp_repo
 
-#vault.hcl:
-#  file.managed:
-#    - name: /etc/vault.d/vault.hcl
-#    - source: salt://{{tpldir}}/configs/vault.hcl
-#    - user: vault
-#    - group: vault
-#    - mode: 644
-#    - template: jinja
+vault.hcl:
+  file.managed:
+    - name: /etc/vault.d/vault.hcl
+    - source: salt://{{tpldir}}/configs/vault.hcl
+    - user: vault
+    - group: vault
+    - mode: 644
+    - template: jinja
