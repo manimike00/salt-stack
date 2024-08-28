@@ -1,4 +1,4 @@
 base:
-  dev-nginx-pp-bastion-vm.internal.cloudapp.net:
-  - nginx
+  dev-vault-pp-vm.internal.cloudapp.net:
+  - vault
   
