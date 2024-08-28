@@ -31,12 +31,10 @@ add_hashicorp_repo:
     - require:
       - cmd: add_hashicorp_gpg_key
 
-
-
-#update_apt_cache:
-#  cmd.run:
-#    - name: apt update
-#    - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
+update_apt_cache_vault:
+  cmd.run:
+    - name: apt update
+    - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
 
 #vault.hcl:
 #  file.managed:
