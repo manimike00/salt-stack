@@ -53,3 +53,14 @@ vault.hcl:
     - group: vault
     - mode: 644
     - template: jinja
+    - require:
+      - pkg: install_vault
+
+
+start_vault_service:
+  service.running:
+    - name: vault
+    - enable: true
+    - require:
+      - pkg: install_vault
+      - file: vault.hcl
