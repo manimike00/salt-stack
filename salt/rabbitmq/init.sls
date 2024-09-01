@@ -70,4 +70,4 @@ rabbitmq_apt_source:
     - user: root
     - group: root
     - require:
-     - cmd: download_rabbitmq_server_gpg_key
+      - cmd: download_rabbitmq_server_gpg_key
