@@ -71,3 +71,10 @@ rabbitmq_apt_source:
     - group: root
     - require:
       - cmd: download_rabbitmq_server_gpg_key
+
+update_apt_cache_rabbitmq:
+  cmd.run:
+    - name: apt update
+    - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
+    - require:
+      - file: rabbitmq_apt_source
