@@ -102,4 +102,13 @@ install_erlang_packages:
       - erlang-tools
       - erlang-xmerl    
     - require:
-      - cmd: update_apt_cache_rabbitmq  
+      - cmd: update_apt_cache_rabbitmq
+
+# Install RabbitMQ server and its dependencies
+install_rabbitmq_server:
+  pkg.installed:
+    - name: rabbitmq-server
+    - refresh: true
+    - reinstall: true
+    - require:
+      - pkg: install_erlang_packages
