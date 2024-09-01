@@ -72,9 +72,34 @@ rabbitmq_apt_source:
     - require:
       - cmd: download_rabbitmq_server_gpg_key
 
+## Update package indices
 update_apt_cache_rabbitmq:
   cmd.run:
     - name: apt update
     - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
     - require:
       - file: rabbitmq_apt_source
+
+# Install Erlang packages
+install_erlang_packages:
+  pkg.installed:
+    - pkgs:
+      - erlang-base
+      - erlang-asn1
+      - erlang-crypto
+      - erlang-eldap
+      - erlang-ftp
+      - erlang-inets
+      - erlang-mnesia
+      - erlang-os-mon
+      - erlang-parsetools
+      - erlang-public-key
+      - erlang-runtime-tools
+      - erlang-snmp
+      - erlang-ssl
+      - erlang-syntax-tools
+      - erlang-tftp
+      - erlang-tools
+      - erlang-xmerl    
+    - require:
+      - cmd: update_apt_cache_rabbitmq  
