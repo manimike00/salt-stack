@@ -24,7 +24,7 @@ download_rabbitmq_gpg_key:
       - pkg: install_packages
 
 ## Community mirror of Cloudsmith: modern Erlang repository
-download_rabbitmq_gpg_key:
+download_rabbitmq_erlang_gpg_key:
   cmd.run:
     - name: curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | gpg --dearmor | tee /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg
     - runas: root
@@ -41,4 +41,4 @@ download_rabbitmq_server_gpg_key:
     - shell: /bin/bash
     - output_loglevel: quiet
     - require:
-      - cmd: download_rabbitmq_gpg_key
+      - cmd: download_rabbitmq_erlang_gpg_key
