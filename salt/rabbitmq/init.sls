@@ -8,7 +8,7 @@ install_packages:
     - pkgs:
       - curl
       - gnupg
-      - - gpg
+      - gpg
       - apt-transport-https
     - require:
       - cmd: update_apt_cache
