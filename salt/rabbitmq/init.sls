@@ -3,11 +3,12 @@ update_apt_cache:
     - name: apt update
     - unless: "test $(find /var/lib/apt/lists/ -mmin -60 | wc -l) -ne 0"
 
-install_gpg_wget:
+install_packages:
   pkg.installed:
     - pkgs:
       - curl
       - gnupg
+      - - gpg
       - apt-transport-https
     - require:
       - cmd: update_apt_cache
@@ -20,8 +21,7 @@ download_rabbitmq_gpg_key:
     - shell: /bin/bash
     - output_loglevel: quiet
     - require:
-      - pkg: curl
-      - pkg: gpg
+      - pkg: install_packages
 save_rabbitmq_gpg_key:
   file.managed:
     - name: /usr/share/keyrings/com.rabbitmq.team.gpg
